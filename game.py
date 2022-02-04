@@ -25,7 +25,7 @@ font = pygame.font.Font('NotoSans-Regular.ttf', 20)
 
 
 BLOCK_SIZE = 20
-SPEED = 8
+SPEED = 20
 
 class SnakeGame:
 
@@ -95,7 +95,7 @@ class SnakeGame:
         # Checking if game is over
         reward = 0
         game_over = False
-        if self._is_game_over() or self.frame_iterations > 100*len(self.snake):
+        if self.is_game_over() or self.frame_iterations > 100*len(self.snake):
             game_over = True
             reward = -10
             return reward, game_over, self.score
@@ -170,7 +170,7 @@ class SnakeGame:
 
         self.head = Point(x, y)
 
-    def _is_game_over(self, pt=None):
+    def is_game_over(self, pt=None):
         if(pt is None):
             pt = self.head
 
